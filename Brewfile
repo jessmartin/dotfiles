@@ -2,11 +2,8 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-tap "homebrew/completions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/versions"
-tap "raggi/ale"
 
 cask "xquartz"
 
