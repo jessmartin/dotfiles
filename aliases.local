@@ -1,0 +1,34 @@
+# Git
+alias gst='git status'
+alias gs='git status'
+alias gl='git pull'
+alias gp='git push'
+alias gd='git diff'
+alias gdh='git diff HEAD'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gcp='git cherry-pick'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gcap='git commit -v -a && git push'
+alias gpp='git pull; git push'
+alias grpo='git remote prune origin'
+alias "clean-local-branches"='git branch --merged master | grep -v '\''master$'\'' | xargs git branch -d'
+alias clb='clean-local-branches'
+alias pair='git pair'
+alias gap='git add --patch'
+
+# Rails
+alias rdm='rake db:migrate'
+alias rdtp='rake db:test:prepare'
+alias rdfl='rake db:fixtures:load'
+alias rdr='rake db:rollback'
+alias rroutes='rake routes'
+alias fs='foreman start'
+
+# Capistrano
+alias csd='cap staging deploy'
+
+# Heroku
+alias gphm='git push heroku master'
+

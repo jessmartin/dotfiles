@@ -1,3 +1,5 @@
+#!/bin/sh
+
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -15,7 +17,6 @@ brew "bash-completion"
 brew "bash-git-prompt"
 brew "htop"
 brew "mas"
-brew "postgresql@9.5"
 brew "wget"
 brew "youtube-dl"
 

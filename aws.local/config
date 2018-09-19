@@ -1,0 +1,8 @@
+[default]
+region = us-west-2
+
+[profile network-editor]
+region = us-west-2
+role_arn = arn:aws:iam::485000428307:role/network-editor
+source_profile = default
+
