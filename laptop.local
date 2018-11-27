@@ -25,6 +25,7 @@ cask "alfred"
 cask "caffeine"
 cask "dockutil"
 cask "dropbox"
+cask "ffmpeg"
 cask "fluid"
 cask "flux"
 cask "font-open-sans"
@@ -59,3 +60,9 @@ mas "Sip", id: 507257563
 mas "Tomato One", id: 907364780
 mas "Trello", id: 1278508951
 mas "Tweetbot", id: 557168941
+mas "Xcode", id: 497799835
+
+## TODO
+
+# Rename Tomato One to Pomodoro One
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

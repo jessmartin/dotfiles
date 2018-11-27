@@ -32,3 +32,11 @@ alias csd='cap staging deploy'
 # Heroku
 alias gphm='git push heroku master'
 
+# Bundler
+alias bi='bundle install'
+
+# Youtube-dl
+alias yt='youtube-dl -f bestaudio -x --audio-format m4a'
+
+# Add Alias
+alias add-alias='vim ~/dotfiles-local/aliases.local'
