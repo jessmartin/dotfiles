@@ -5,9 +5,9 @@ These files are a combination of my settings and preferences as well as scripts 
 ## Setting up a new Mac
 
 - Copy SSH keys over from another computer
-- Clone this repo to `~/code/dotfiles`
+- Clone this repo to `~/.dotfiles`
 
-    `git clone git@github.com:jessmartin/dotfiles.git ~/code/dotfiles`
+    `git clone git@github.com:jessmartin/dotfiles.git ~/.dotfiles`
 
 - Install homebrew from [brew.sh](https://brew.sh/)
 - Install everything via homebrew
