@@ -12,7 +12,7 @@ These files are a combination of my settings and preferences as well as scripts 
 - Install homebrew from [brew.sh](https://brew.sh/)
 - Install everything via homebrew
 
-    `brew bundle --file=./laptop.local`
+    `brew bundle --file=./Brewfile`
 
 - Customize macos settings
 
@@ -30,3 +30,8 @@ These files are a combination of my settings and preferences as well as scripts 
 - Link up dotfiles
 
     `./bootstrap.sh`
+
+## Todo
+
+- [ ] Set up a zsh prompt with git support
+- [ ] Sync ubersicht background image
