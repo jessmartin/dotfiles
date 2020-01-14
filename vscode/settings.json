@@ -4,5 +4,6 @@
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": false,
     "editor.fontFamily": "\"Meslo LG M for Powerline\", Monaco, Menlo",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "workbench.iconTheme": "material-icon-theme"
 }
