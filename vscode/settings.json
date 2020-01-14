@@ -1,0 +1,8 @@
+{
+    "workbench.colorTheme": "Solarized Dark",
+    "editor.fontSize": 18,
+    "files.autoSave": "onFocusChange",
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "\"Meslo LG M for Powerline\", Monaco, Menlo",
+    "window.zoomLevel": 0
+}
