@@ -18,6 +18,15 @@ These files are a combination of my settings and preferences as well as scripts 
 
     `./macos`
 
+- Load the iTerm2 Dynamic Profile in `init/iterm2-Default.json` and under Appearance
+    - General: Set Theme to "Minimal"
+    - Tabs: Disable "Show tab numbers"
+    - Tabs: Disable "Stretch tabs to fill bar"
+
+- Install VSCode extensions and settings
+
+    `./vscode/install.sh`
+
 - Link up dotfiles
 
     `./bootstrap.sh`
