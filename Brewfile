@@ -70,6 +70,7 @@ mas "Sip", id: 507257563
 mas "Tomato One", id: 907364780
 mas "Trello", id: 1278508951
 mas "Tweetbot", id: 557168941
+mas "Webcam Settings", id: 533696630
 mas "Xcode", id: 497799835
 
 ## TODO
