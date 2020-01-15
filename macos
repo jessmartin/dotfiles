@@ -168,6 +168,9 @@ sudo systemsetup -settimezone "America/New_York" > /dev/null
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
+# Increase mouse tracking speed
+defaults write -g com.apple.mouse.scaling -float 5.0
+
 ###############################################################################
 # Energy saving                                                               #
 ###############################################################################
