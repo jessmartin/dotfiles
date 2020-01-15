@@ -31,7 +31,17 @@ These files are a combination of my settings and preferences as well as scripts 
 
     `./bootstrap.sh`
 
+- 1Password and login to all the things
+- Register SizeUp license from 1password (double-click on file)
+- Set SizeUp preferences
+    - Set to show on startup
+    - Set to not show menubar
+
+- Configure Alfred
+
 ## Todo
 
 - [ ] Set up a zsh prompt with git support
 - [ ] Sync ubersicht background image
+- [ ] Check in Alfred preferences to this repo (can restore from preferences)
+- [ ] Set the contents of the Dock automatically
