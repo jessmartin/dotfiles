@@ -34,6 +34,7 @@ alias gphm='git push heroku master'
 
 # Bundler
 alias bi='bundle install'
+alias be='bundle exec'
 
 # Youtube-dl
 alias yt='youtube-dl -f bestaudio -x --audio-format m4a'
