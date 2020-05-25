@@ -3,8 +3,8 @@ export AWS_PROFILE="default"
 export PATH="/usr/local/sbin:$PATH"
 
 # Set up history
-HISTSIZE=50000
-SAVEHIST=10000
+export HISTSIZE=50000
+export SAVEHIST=10000
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
@@ -38,5 +38,9 @@ setopt prompt_subst
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
+
+# Git prompt
+export AGKOZAK_CUSTOM_SYMBOLS=( '↕' '📥' '📤' '🆕' '␡' '✨' '♻️' '👻' '📦')
+source ~/.zsh/agkozak-zsh-prompt.plugin.zsh
 
 source ~/.aliases

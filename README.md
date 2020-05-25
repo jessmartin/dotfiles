@@ -41,7 +41,11 @@ These files are a combination of my settings and preferences as well as scripts 
 
 ## Todo
 
-- [ ] Set up a zsh prompt with git support
 - [ ] Sync ubersicht background image
 - [ ] Check in Alfred preferences to this repo (can restore from preferences)
 - [ ] Set the contents of the Dock automatically
+
+## Done
+
+- [x] Set up a zsh prompt with git support. Used [this one](https://github.com/agkozak/agkozak-zsh-prompt)
+
