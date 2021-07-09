@@ -1,12 +1,35 @@
 {
-    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Solarized Light",
     "editor.fontSize": 18,
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": false,
     "editor.fontFamily": "\"Meslo LG M for Powerline\", Monaco, Menlo",
-    "window.zoomLevel": 1,
     "workbench.iconTheme": "material-icon-theme",
     "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.renderWhitespace": "none",
+    "workbench.colorCustomizations": {},
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "sourcekit-lsp.serverPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+    "sourcekit-lsp.serverArguments": [
+        "-Xswiftc",
+        "-sdk",
+        "-Xswiftc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk",
+        "-Xswiftc",
+        "-target",
+        "-Xswiftc",
+        "x86_64-apple-ios13.6-simulator",
+    ],
+    "editor.inlineSuggest.enabled": true,
 }
