@@ -10,6 +10,7 @@ These files are a combination of my settings and preferences as well as scripts 
     `git clone git@github.com:jessmartin/dotfiles.git ~/.dotfiles`
 
 - Install homebrew from [brew.sh](https://brew.sh/)
+    - Add homebrew to the path, following most recent instructions
 - Install everything via homebrew
 
     `brew bundle --file=./Brewfile`
