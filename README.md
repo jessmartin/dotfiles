@@ -10,6 +10,7 @@ These files are a combination of my settings and preferences as well as scripts 
     `git clone git@github.com:jessmartin/dotfiles.git ~/.dotfiles`
 
 - Install homebrew from [brew.sh](https://brew.sh/)
+    - Add homebrew to the path, following most recent instructions
 - Install everything via homebrew
 
     `brew bundle --file=./Brewfile`
@@ -41,9 +42,9 @@ These files are a combination of my settings and preferences as well as scripts 
 
 ## Todo
 
-- [ ] Sync ubersicht background image
 - [ ] Check in Alfred preferences to this repo (can restore from preferences)
 - [ ] Set the contents of the Dock automatically
+- [ ] Rename Tomato One to Pomodoro One
 
 ## Done
 
