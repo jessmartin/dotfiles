@@ -42,9 +42,9 @@ These files are a combination of my settings and preferences as well as scripts 
 
 ## Todo
 
-- [ ] Sync ubersicht background image
 - [ ] Check in Alfred preferences to this repo (can restore from preferences)
 - [ ] Set the contents of the Dock automatically
+- [ ] Rename Tomato One to Pomodoro One
 
 ## Done
 
