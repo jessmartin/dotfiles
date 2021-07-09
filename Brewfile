@@ -82,12 +82,15 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "xquartz"
-cask "zoomus"
+cask "zoom"
 
 mas "Bear", id: 1091189122
 mas "Capo", id: 696977615
 mas "Clocks", id: 414554506
+mas "Dato", id: 1470584107
+mas "FocusLite", id: 1515566936
 mas "GarageBand", id: 682658836
+mas "Hand Mirror", id: 1502839586
 mas "iMovie", id: 408981434
 mas "Irvue", id: 1039633667
 mas "Keynote", id: 409183694
@@ -101,6 +104,3 @@ mas "Trello", id: 1278508951
 mas "Tweetbot", id: 557168941
 mas "Webcam Settings", id: 533696630
 mas "Xcode", id: 497799835
-mas "Dato", id: 1470584107
-mas "Hand Mirror", id: 1502839586
-mas "FocusLite", id: 1515566936
