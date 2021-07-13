@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Solarized Light",
     "editor.fontSize": 18,
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": false,
@@ -32,4 +31,7 @@
         "x86_64-apple-ios13.6-simulator",
     ],
     "editor.inlineSuggest.enabled": true,
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Solarized Dark",
 }
