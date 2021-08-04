@@ -1,5 +1,5 @@
 {
-    "editor.fontSize": 18,
+    "editor.fontSize": 16,
     "files.autoSave": "onFocusChange",
     "editor.minimap.enabled": false,
     "editor.fontFamily": "\"Meslo LG M for Powerline\", Monaco, Menlo",
@@ -34,4 +34,5 @@
     "window.autoDetectColorScheme": true,
     "workbench.preferredDarkColorTheme": "Solarized Dark",
     "workbench.colorTheme": "Solarized Dark",
+    "github.copilot.autocomplete.enable": true,
 }
