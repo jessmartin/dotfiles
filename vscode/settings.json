@@ -1,24 +1,43 @@
 {
-  "editor.fontSize": 16,
-  "files.autoSave": "onFocusChange",
-  "editor.minimap.enabled": false,
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.tabSize": 2,
-  "editor.formatOnSave": true,
-  "editor.renderWhitespace": "none",
-  "workbench.colorCustomizations": {},
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  "editor.suggestSelection": "first",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.formatOnPaste": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "editor.fontFamily": "IBM Plex Mono, Menlo, Monaco, 'Courier New', monospace",
+  "[svelte]": {
+    "editor.quickSuggestions": {
+      "other": "on",
+      "strings": "on",
+      "comments": "off"
+    }
+  },
+  "svelte.enable-ts-plugin": true,
+  "sourcekit-lsp.serverPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+  "workbench.startupEditor": "none",
+  "workbench.preferredDarkColorTheme": "Solarized Dark",
+  "github.copilot.enable": {
+    "markdown": false,
+    "*": true,
+    "plaintext": false,
+    "yaml": false
+  },
+  "editor.tabSize": 2,
+  "terminal.integrated.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.fontSize": 16,
+  "editor.inlineSuggest.enabled": true,
+  "editor.accessibilitySupport": "off",
+  "files.autoSave": "onFocusChange",
+  "editor.minimap.enabled": false,
   "files.exclude": {
-    "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
+    "**/.classpath": true,
     "**/.factorypath": true
   },
-  "sourcekit-lsp.serverPath": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+  "svelte.plugin.svelte.note-new-transformation": false,
   "sourcekit-lsp.serverArguments": [
     "-Xswiftc",
     "-sdk",
@@ -29,33 +48,18 @@
     "-Xswiftc",
     "x86_64-apple-ios13.6-simulator"
   ],
-  "editor.inlineSuggest.enabled": true,
-  "workbench.preferredDarkColorTheme": "Solarized Dark",
-  "github.copilot.autocomplete.enable": true,
-  "workbench.startupEditor": "none",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": true,
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": false,
-    "plaintext": false,
-    "markdown": false
-  },
-  "svelte.enable-ts-plugin": true,
-  "[svelte]": {
-    "editor.quickSuggestions": {
-      "other": "on",
-      "comments": "off",
-      "strings": "on"
-    }
-  },
-  "svelte.plugin.svelte.note-new-transformation": false,
-  "editor.fontFamily": "IBM Plex Mono, Menlo, Monaco, 'Courier New', monospace",
-  "workbench.colorTheme": "Solarized Dark",
-  "window.autoDetectColorScheme": true,
-  "terminal.integrated.fontSize": 16,
+  "vim.foldfix": true,
+  "editor.suggestSelection": "first",
+  "workbench.colorCustomizations": {},
   "[python]": {
     "editor.formatOnType": true
   },
-  "vim.foldfix": true
+  "github.copilot.autocomplete.enable": true,
+  "window.autoDetectColorScheme": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.colorTheme": "Solarized Dark",
+  "editor.renderWhitespace": "none",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  }
 }
