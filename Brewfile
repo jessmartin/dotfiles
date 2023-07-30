@@ -70,7 +70,6 @@ cask "raycast"
 cask "remarkable"
 cask "sizeup"
 cask "sketch"
-cask "sketchup"
 cask "slack"
 cask "spotify"
 cask "streamlabs-obs"
@@ -81,12 +80,11 @@ cask "visual-studio-code"
 cask "vlc"
 cask "vnc-viewer"
 cask "whatsapp"
-cask "zoomus"
+cask "zoom"
 
 # Apps from Mac App Store
 mas "Bear", id: 1091189122
 mas "Capo", id: 696977615
-mas "Clocks", id: 414554506
 mas "Craft", id: 1487937127
 mas "Dato", id: 1470584107
 mas "FocusLite", id: 1515566936
