@@ -24,7 +24,9 @@ These files are a combination of my settings and preferences as well as scripts 
 
 - Log into Dropbox and start syncing
 
-- Load the iTerm2 Dynamic Profile in `init/iterm2-Default.json` and under Appearance
+*iTerm2*
+- Load the iTerm2 Dynamic Profile in `init/iterm2-Default.json` under Profiles
+- Under Appearance
     - General: Set Theme to "Minimal"
     - Tabs: Disable "Show tab numbers"
     - Tabs: Disable "Stretch tabs to fill bar"
