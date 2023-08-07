@@ -29,7 +29,7 @@ These files are a combination of my settings and preferences as well as scripts 
     - Tabs: Disable "Show tab numbers"
     - Tabs: Disable "Stretch tabs to fill bar"
 
-- Install VSCode extensions and settings
+- Link up VS Code settings
 
     `./vscode/install.sh`
 
