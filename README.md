@@ -18,15 +18,15 @@ These files are a combination of my settings and preferences as well as scripts 
     `brew bundle --file=./Brewfile`
 
 - Customize macos settings
-    - Change the computer name on lines 20-23
+  - Change the computer name on lines 20-23
 
     `./macos`
 
 - Log into Dropbox and start syncing
 
-*iTerm2*
 - Load the iTerm2 Dynamic Profile in `init/iterm2-Default.json` under Profiles
-- Under Appearance
+  - Under "Services", receive Beta updates
+  - Under Appearance
     - General: Set Theme to "Minimal"
     - Tabs: Disable "Show tab numbers"
     - Tabs: Disable "Stretch tabs to fill bar"
@@ -35,29 +35,29 @@ These files are a combination of my settings and preferences as well as scripts 
 
     `./vscode/install.sh`
 
-- Install [screenotate](https://screenotate.com)
-    - set keyboard shortcut to use Shift-Command-4
-    - set directory to point to Dropbox
-
 - Link up dotfiles
 
     `./bootstrap.sh`
 
 - 1Password and login to all the things
-    - Register SizeUp license from 1password (double-click on file)
-    - Register Screenotate
 
 - Set SizeUp preferences
-    - Set to show on startup
-    - Set to not show menubar
+  - Set to show on startup
+  - Set to not show menubar
+  - Set to not Show Visual Actions Overlay
+  - Register SizeUp license from 1password (double-click on file)
+
+- Install [screenotate](https://screenotate.com)
+  - set keyboard shortcut to use Shift-Command-4
+  - set directory to point to Dropbox
+  - Register Screenotate from 1password
 
 - Configure Alfred / Raycast
 
 ## Todo
 
 - [ ] Check in Alfred preferences to this repo (can restore from preferences)
-- [ ] Set the contents of the Dock automatically
-- [ ] Rename Tomato One to Pomodoro One
+- [ ] Set the contents of the Dock automatical
 
 ## Done
 

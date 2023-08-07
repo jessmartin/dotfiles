@@ -57,9 +57,10 @@
   "github.copilot.autocomplete.enable": true,
   "window.autoDetectColorScheme": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "workbench.colorTheme": "Solarized Dark",
+  "workbench.colorTheme": "Solarized Light",
   "editor.renderWhitespace": "none",
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
-  }
+  },
+  "workbench.preferredLightColorTheme": "Solarized Light"
 }
