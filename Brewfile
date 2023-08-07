@@ -37,6 +37,7 @@ brew "youtube-dl"
 
 # Apps
 cask "1password"
+cask "arc"
 cask "audio-hijack"
 cask "caffeine"
 cask "db-browser-for-sqlite"
