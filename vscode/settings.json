@@ -18,9 +18,10 @@
   "workbench.startupEditor": "none",
   "workbench.preferredDarkColorTheme": "Solarized Dark",
   "github.copilot.enable": {
-    "markdown": false,
     "*": true,
     "plaintext": false,
+    "markdown": true,
+    "scminput": false,
     "yaml": false
   },
   "editor.tabSize": 2,
@@ -62,5 +63,6 @@
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1"
   },
-  "workbench.preferredLightColorTheme": "Solarized Light"
+  "workbench.preferredLightColorTheme": "Solarized Light",
+  "hediet.vscode-drawio.resizeImages": null
 }
