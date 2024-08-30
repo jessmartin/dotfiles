@@ -1,6 +1,7 @@
 export AWS_PROFILE="default"
 . $(brew --prefix asdf)/asdf.sh
 export PATH="/usr/local/sbin:$PATH"
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 # Set up history
 export HISTSIZE=50000
