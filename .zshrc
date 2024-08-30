@@ -1,5 +1,5 @@
 export AWS_PROFILE="default"
-. $(brew --prefix asdf)/asdf.sh
+export PATH="$HOME/.asdf/shims:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 . $(brew --prefix asdf)/libexec/asdf.sh
 
