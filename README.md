@@ -41,23 +41,40 @@ These files are a combination of my settings and preferences as well as scripts 
 
 - 1Password and login to all the things
 
-- Set SizeUp preferences
-  - Set to show on startup
-  - Set to not show menubar
-  - Set to not Show Visual Actions Overlay
-  - Register SizeUp license from 1password (double-click on file)
+- Obsidian
+    - Go to iCloud Drive
+    - Download `jessmartin` folder
+    - Right-click and set to `Keep Downloaded`
+    - In Obsidian, go to "Open folder as Vault"
 
-- Install [screenotate](https://screenotate.com)
-  - set keyboard shortcut to use Shift-Command-4
-  - set directory to point to Dropbox
-  - Register Screenotate from 1password
+- Log into Arc
+    - Change default search engine to Google
+    - Keyboard shortcuts
+        - Set command-shift-B as shortcut for `Show/Hide Sidebar`
+        - Disable `Exit` using Esc
+    - Install extensions (move them?)
+        - 1password
 
-- Configure Alfred / Raycast
+- Open VSCode
+    - Import Cursor settings from VS Code
+
+- asdf setup - could walk the asdf 
+    - `asdf plugin install ruby`
+    - `asdf plugin install nodejs`
+    - `asdf install`
+
+- Install superwhisper
+    - Download Standard model
+
+- Open Maccy
+    - Set to save 100 records
+
+- Configure Raycast (copy preferences from another Mac)
 
 ## Todo
 
-- [ ] Check in Alfred preferences to this repo (can restore from preferences)
-- [ ] Set the contents of the Dock automatical
+- [ ] Set the contents of the Dock automatically
+- [ ] Figure out how to check in Cursor settings/extensions and port them
 
 ## Done
 
