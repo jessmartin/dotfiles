@@ -1,6 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/services"
 
 # brew
@@ -110,12 +108,11 @@ cask "vnc-viewer"
 cask "whatsapp"
 cask "zoom"
 
-mas "Bear", id: 1091189122
 mas "Capo", id: 696977615
 mas "Dato", id: 1470584107
 mas "GarageBand", id: 682658836
 mas "Hand Mirror", id: 1502839586
-mas "iMovie", id: 408981434
+# mas "iMovie", id: 408981434 # only install on desktops to save space
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
