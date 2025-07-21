@@ -90,7 +90,6 @@ cask "postico"
 cask "qlmarkdown"
 cask "rapidapi"
 cask "raycast"
-cask "remarkable"
 cask "screen-studio"
 cask "sizeup"
 # cask "sketch" # deprecated
@@ -116,6 +115,7 @@ mas "Hand Mirror", id: 1502839586
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "reMarkable", id: 1276493162
 mas "Sip", id: 507257563
 mas "Tomato 2", id: 1494210770
 mas "Trello", id: 1278508951
