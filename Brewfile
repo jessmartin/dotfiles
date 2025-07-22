@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 
 # brew
+brew "1password-cli"
 brew "ack"
 brew "asdf"
 brew "bash-completion"
@@ -98,6 +99,7 @@ cask "spotify"
 # cask "streamlabs" # only install on desktops
 cask "sublime-text"
 # superwhisper
+cask "tailscale-app"
 cask "telegram"
 cask "tuple"
 cask "typefully"
