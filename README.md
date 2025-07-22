@@ -59,8 +59,8 @@ These files are a combination of my settings and preferences as well as scripts 
     - Import Cursor settings from VS Code
 
 - asdf setup - could walk the asdf 
-    - `asdf plugin install ruby`
-    - `asdf plugin install nodejs`
+    - `asdf plugin add ruby`
+    - `asdf plugin add nodejs`
     - `asdf install`
 
 - Install superwhisper
