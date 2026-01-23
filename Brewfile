@@ -108,6 +108,7 @@ cask "visual-studio-code"
 cask "vlc"
 cask "vnc-viewer"
 cask "whatsapp"
+cask "whichspace"
 cask "zoom"
 
 mas "Capo", id: 696977615
