@@ -17,10 +17,10 @@ $git_status\
 $git_state\
 $cmd_duration"""
 
-# Claude Code profile icon
+# Claude Code profile icon (reads symlink target)
 [custom.cc_profile]
-command = "case $(cat ~/.claude/.current-profile) in *elicit*) echo 🔬;; *sociotechnica*) echo 🏗️;; *personal*) echo 🏠;; esac"
-when = "test -f ~/.claude/.current-profile"
+command = "case $(readlink ~/.claude) in *elicit*) echo 🔬;; *sociotechnica*) echo 🏗️;; *personal*) echo 🏠;; esac"
+when = "test -L ~/.claude"
 format = "[$output ]($style)"
 style = ""
 
@@ -29,9 +29,12 @@ success_symbol = "[%](bold green)"
 error_symbol = "[%](bold red)"
 
 [directory]
-truncation_length = 4
-truncate_to_repo = false
-style = "bold blue"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = true
+repo_root_style = "bold blue"
+style = "blue"
+repo_root_format = "[$repo_root]($repo_root_style)[$path]($style) "
 
 [git_branch]
 format = "[$branch]($style) "
