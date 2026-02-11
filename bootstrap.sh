@@ -41,6 +41,15 @@ function createSymlinks() {
 		ln -sf "$PWD/$dir" "$HOME/$dir"
 		echo "  $dir -> $PWD/$dir"
 	done
+
+	# Symlink starship config
+	mkdir -p "$HOME/.config"
+	if [[ -f "$HOME/.config/starship.toml" && ! -L "$HOME/.config/starship.toml" ]]; then
+		echo "Backing up existing starship.toml"
+		mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.backup"
+	fi
+	ln -sf "$PWD/.config/starship.toml" "$HOME/.config/starship.toml"
+	echo "  .config/starship.toml -> $PWD/.config/starship.toml"
 }
 
 function initClaudeProfiles() {
