@@ -18,10 +18,10 @@ $git_status\
 $git_state\
 $cmd_duration"""
 
-# GitHub PR number (reads from async cache)
+# GitHub PR number (reads from async cache per branch)
 [custom.gh_pr]
-command = "cat /tmp/starship_pr_cache_$(git rev-parse --abbrev-ref HEAD 2>/dev/null)_$(pwd | md5) 2>/dev/null"
-when = "test -f /tmp/starship_pr_cache_$(git rev-parse --abbrev-ref HEAD 2>/dev/null)_$(pwd | md5)"
+command = "cat .git/PR_NUMBER_$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-') 2>/dev/null"
+when = "test -d .git"
 format = "[PR#$output ]($style)"
 style = "cyan"
 

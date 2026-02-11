@@ -50,13 +50,19 @@ source ~/.claude-profiles
 # Starship prompt (config at ~/.config/starship.toml)
 eval "$(starship init zsh)"
 
-# Async PR number cache for starship
+# Async PR number cache for starship (stores in .git/PR_NUMBER_<branch>)
 _update_pr_cache() {
-  local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  [[ -d .git ]] || return
+  local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-')
   [[ -z "$branch" ]] && return
-  local cache_file="/tmp/starship_pr_cache_${branch}_$(pwd | md5)"
-  # Run in background, suppress all output
-  (gh pr view --json number -q .number 2>/dev/null > "$cache_file" || rm -f "$cache_file") &!
+  (
+    pr_num=$(gh pr view --json number -q .number 2>/dev/null)
+    if [[ -n "$pr_num" ]]; then
+      echo "$pr_num" > ".git/PR_NUMBER_$branch"
+    else
+      rm -f ".git/PR_NUMBER_$branch"
+    fi
+  ) &>/dev/null &!
 }
 add-zsh-hook precmd _update_pr_cache
 
