@@ -63,7 +63,7 @@ function initClaudeProfiles() {
 	fi
 
 	# Create profile directories with full structure
-	for profile in elicit personal sociotechnica; do
+	for profile in elicit personal st; do
 		local dir="$HOME/.claude-$profile"
 		if [[ ! -d "$dir" ]]; then
 			mkdir -p "$dir/skills"

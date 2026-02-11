@@ -35,8 +35,8 @@ function cc-personal() {
   echo "   ~/.claude -> $profile_dir"
 }
 
-function cc-sociotechnica() {
-  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-sociotechnica"
+function cc-st() {
+  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-st"
   if [[ ! -d "$profile_dir" ]]; then
     echo "Profile not initialized. Run: cc-init-profiles"
     return 1
@@ -64,7 +64,7 @@ function cc_profile_icon() {
     local target=$(readlink ~/.claude)
     case "$target" in
       *elicit*) echo "🔬";;
-      *sociotechnica*) echo "🏗️";;
+      *-st) echo "🏗️";;
       *personal*) echo "🏠";;
       *) echo "";;
     esac
@@ -82,7 +82,7 @@ function cc-init-profiles() {
   fi
 
   # Create profile directories
-  for profile in elicit personal sociotechnica; do
+  for profile in elicit personal st; do
     local dir="$CLAUDE_PROFILES_DIR/.claude-$profile"
 
     if [[ ! -d "$dir" ]]; then
