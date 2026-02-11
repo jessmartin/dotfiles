@@ -10,12 +10,20 @@ $directory\
 $line_break\
 $character"""
 
-# Right prompt - git info
+# Right prompt - git info + PR number
 right_format = """
+${custom.gh_pr}\
 $git_branch\
 $git_status\
 $git_state\
 $cmd_duration"""
+
+# GitHub PR number for current branch
+[custom.gh_pr]
+command = "gh pr view --json number -q .number 2>/dev/null"
+when = "gh pr view --json number -q .number 2>/dev/null"
+format = "[PR#$output ]($style)"
+style = "cyan"
 
 # Claude Code profile icon (reads symlink target)
 [custom.cc_profile]
