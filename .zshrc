@@ -50,8 +50,8 @@ source ~/.zsh/agkozak-zsh-prompt.plugin.zsh
 source ~/.aliases
 source ~/.claude-profiles
 
-# Add Claude Code profile icon to prompt
-PROMPT='$(cc_profile_icon) '$PROMPT
+# Add Claude Code profile icon to right prompt
+RPROMPT='$(cc_profile_icon) '$RPROMPT
 
 # --WCGW_ENVIRONMENT_START--
 if [ -n "$IN_WCGW_ENVIRONMENT" ]; then

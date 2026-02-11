@@ -1,59 +1,114 @@
 # Claude Code Profile Management
 # Enables different settings/skills for different work contexts
+#
+# Each profile has its own settings at ~/.claude-{profile}/settings.json
+# Switching profiles swaps ~/.claude/settings.json
+#
+# NOTE: Account switching (Teams vs Max) requires logging in at claude.ai
+# in your browser - Claude Code uses browser-based OAuth.
+
+CLAUDE_PROFILES_DIR="$HOME"
 
 # Profile switching functions
 function cc-elicit() {
-  rm -f ~/.claude
-  ln -s ~/.claude-elicit ~/.claude
-  claude logout 2>/dev/null
-  claude login --email jess@elicit.com
-  echo "🔬 Switched to Elicit context"
+  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-elicit"
+  if [[ ! -f "$profile_dir/settings.json" ]]; then
+    echo "Profile not initialized. Run: cc-init-profiles"
+    return 1
+  fi
+  cp "$profile_dir/settings.json" ~/.claude/settings.json
+  echo "$profile_dir" > ~/.claude/.current-profile
+  echo "🔬 Switched to Elicit profile"
+  echo "   Settings loaded from $profile_dir/settings.json"
+  echo "   NOTE: If switching accounts, log in at claude.ai in your browser"
 }
 
 function cc-personal() {
-  rm -f ~/.claude
-  ln -s ~/.claude-personal ~/.claude
-  claude logout 2>/dev/null
-  claude login --email jessmartin@gmail.com
-  echo "🏠 Switched to Personal context"
+  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-personal"
+  if [[ ! -f "$profile_dir/settings.json" ]]; then
+    echo "Profile not initialized. Run: cc-init-profiles"
+    return 1
+  fi
+  cp "$profile_dir/settings.json" ~/.claude/settings.json
+  echo "$profile_dir" > ~/.claude/.current-profile
+  echo "🏠 Switched to Personal profile"
+  echo "   Settings loaded from $profile_dir/settings.json"
 }
 
 function cc-sociotechnica() {
-  rm -f ~/.claude
-  ln -s ~/.claude-sociotechnica ~/.claude
-  claude logout 2>/dev/null
-  claude login --email jessmartin@gmail.com
-  echo "🏗️ Switched to SocioTechnica context"
+  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-sociotechnica"
+  if [[ ! -f "$profile_dir/settings.json" ]]; then
+    echo "Profile not initialized. Run: cc-init-profiles"
+    return 1
+  fi
+  cp "$profile_dir/settings.json" ~/.claude/settings.json
+  echo "$profile_dir" > ~/.claude/.current-profile
+  echo "🏗️ Switched to SocioTechnica profile"
+  echo "   Settings loaded from $profile_dir/settings.json"
+}
+
+# Save current settings back to the active profile
+function cc-save() {
+  if [[ ! -f ~/.claude/.current-profile ]]; then
+    echo "No profile active. Switch to a profile first."
+    return 1
+  fi
+  local profile_dir=$(cat ~/.claude/.current-profile)
+  cp ~/.claude/settings.json "$profile_dir/settings.json"
+  echo "✅ Saved settings to $profile_dir/settings.json"
+}
+
+# Show current profile
+function cc-which() {
+  if [[ -f ~/.claude/.current-profile ]]; then
+    local profile_dir=$(cat ~/.claude/.current-profile)
+    local icon=$(cc_profile_icon)
+    echo "$icon Active profile: $profile_dir"
+  else
+    echo "No profile active"
+  fi
 }
 
 # Get current CC profile icon for prompt
 function cc_profile_icon() {
-  local target=$(readlink ~/.claude 2>/dev/null)
-  case "$target" in
-    *elicit*) echo "🔬";;
-    *sociotechnica*) echo "🏗️";;
-    *personal*) echo "🏠";;
-    *) echo "";;
-  esac
+  if [[ -f ~/.claude/.current-profile ]]; then
+    local target=$(cat ~/.claude/.current-profile)
+    case "$target" in
+      *elicit*) echo "🔬";;
+      *sociotechnica*) echo "🏗️";;
+      *personal*) echo "🏠";;
+      *) echo "";;
+    esac
+  fi
 }
 
 # Initialize profile directories if they don't exist
 function cc-init-profiles() {
-  mkdir -p ~/.claude-elicit/skills
-  mkdir -p ~/.claude-personal/skills
-  mkdir -p ~/.claude-sociotechnica/skills
+  echo "Initializing Claude Code profiles..."
 
-  # Create default settings.json if missing
-  for dir in ~/.claude-elicit ~/.claude-personal ~/.claude-sociotechnica; do
+  for profile in elicit personal sociotechnica; do
+    local dir="$CLAUDE_PROFILES_DIR/.claude-$profile"
+    mkdir -p "$dir/skills"
+
+    # Copy current settings as starting point if no settings exist
     if [[ ! -f "$dir/settings.json" ]]; then
-      echo '{}' > "$dir/settings.json"
+      if [[ -f ~/.claude/settings.json ]]; then
+        cp ~/.claude/settings.json "$dir/settings.json"
+        echo "  ✅ Created $dir/settings.json (copied from current)"
+      else
+        echo '{}' > "$dir/settings.json"
+        echo "  ✅ Created $dir/settings.json (empty)"
+      fi
+    else
+      echo "  ⏭️  $dir/settings.json already exists"
     fi
   done
 
-  # Set default symlink if ~/.claude doesn't exist
-  if [[ ! -L ~/.claude && ! -d ~/.claude ]]; then
-    ln -s ~/.claude-personal ~/.claude
+  # Set default profile marker
+  if [[ ! -f ~/.claude/.current-profile ]]; then
+    echo "$CLAUDE_PROFILES_DIR/.claude-personal" > ~/.claude/.current-profile
+    echo "  Default profile set to personal"
   fi
 
-  echo "✅ Claude Code profiles initialized"
+  echo "✅ Done! Use cc-elicit, cc-personal, or cc-sociotechnica to switch."
 }
