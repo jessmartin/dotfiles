@@ -48,6 +48,7 @@ brew "terraform"
 brew "wget"
 brew "youtube-dl"
 brew "yt-dlp"
+brew "zsh-async"
 
 # casks
 cask "1password"

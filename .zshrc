@@ -50,19 +50,31 @@ source ~/.claude-profiles
 # Starship prompt (config at ~/.config/starship.toml)
 eval "$(starship init zsh)"
 
-# Async PR number cache for starship (stores in .git/PR_NUMBER_<branch>)
+# Async PR number cache using zsh-async
+source /opt/homebrew/share/zsh-async/async.zsh
+async_init
+async_start_worker pr_cache_worker -n
+
+_fetch_pr_number() {
+  local git_dir="$1"
+  local branch="$2"
+  local pr_num=$(gh pr view --json number -q .number 2>/dev/null)
+  if [[ -n "$pr_num" ]]; then
+    echo "$pr_num" > "$git_dir/PR_NUMBER_$branch"
+  else
+    rm -f "$git_dir/PR_NUMBER_$branch" 2>/dev/null
+  fi
+}
+
 _update_pr_cache() {
-  [[ -d .git ]] || return
+  local git_dir=$(git rev-parse --git-dir 2>/dev/null)
+  [[ -z "$git_dir" ]] && return
+  [[ "$git_dir" != /* ]] && git_dir="$PWD/$git_dir"
+
   local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-')
   [[ -z "$branch" ]] && return
-  (
-    pr_num=$(gh pr view --json number -q .number 2>/dev/null)
-    if [[ -n "$pr_num" ]]; then
-      echo "$pr_num" > ".git/PR_NUMBER_$branch"
-    else
-      rm -f ".git/PR_NUMBER_$branch"
-    fi
-  ) &>/dev/null &!
+
+  async_job pr_cache_worker _fetch_pr_number "$git_dir" "$branch"
 }
 add-zsh-hook precmd _update_pr_cache
 
