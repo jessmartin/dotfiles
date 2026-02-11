@@ -50,6 +50,16 @@ source ~/.claude-profiles
 # Starship prompt (config at ~/.config/starship.toml)
 eval "$(starship init zsh)"
 
+# Async PR number cache for starship
+_update_pr_cache() {
+  local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  [[ -z "$branch" ]] && return
+  local cache_file="/tmp/starship_pr_cache_${branch}_$(pwd | md5)"
+  # Run in background, suppress all output
+  (gh pr view --json number -q .number 2>/dev/null > "$cache_file" || rm -f "$cache_file") &!
+}
+add-zsh-hook precmd _update_pr_cache
+
 # --WCGW_ENVIRONMENT_START--
 if [ -n "$IN_WCGW_ENVIRONMENT" ]; then
  PROMPT_COMMAND='printf "◉ $(pwd)──➤ \r\e[2K"'
