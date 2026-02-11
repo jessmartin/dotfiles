@@ -50,6 +50,15 @@ function createSymlinks() {
 	fi
 	ln -sf "$PWD/.config/starship.toml" "$HOME/.config/starship.toml"
 	echo "  .config/starship.toml -> $PWD/.config/starship.toml"
+
+	# Symlink Claude Code skills
+	mkdir -p "$HOME/.claude"
+	if [[ -d "$HOME/.claude/skills" && ! -L "$HOME/.claude/skills" ]]; then
+		echo "Backing up existing skills directory"
+		mv "$HOME/.claude/skills" "$HOME/.claude/skills.backup"
+	fi
+	ln -sf "$PWD/skills" "$HOME/.claude/skills"
+	echo "  .claude/skills -> $PWD/skills"
 }
 
 function initClaudeProfiles() {
