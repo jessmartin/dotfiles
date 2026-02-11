@@ -1,0 +1,59 @@
+# Claude Code Profile Management
+# Enables different settings/skills for different work contexts
+
+# Profile switching functions
+function cc-elicit() {
+  rm -f ~/.claude
+  ln -s ~/.claude-elicit ~/.claude
+  claude logout 2>/dev/null
+  claude login --email jess@elicit.com
+  echo "🔬 Switched to Elicit context"
+}
+
+function cc-personal() {
+  rm -f ~/.claude
+  ln -s ~/.claude-personal ~/.claude
+  claude logout 2>/dev/null
+  claude login --email jessmartin@gmail.com
+  echo "🏠 Switched to Personal context"
+}
+
+function cc-sociotechnica() {
+  rm -f ~/.claude
+  ln -s ~/.claude-sociotechnica ~/.claude
+  claude logout 2>/dev/null
+  claude login --email jessmartin@gmail.com
+  echo "🏗️ Switched to SocioTechnica context"
+}
+
+# Get current CC profile icon for prompt
+function cc_profile_icon() {
+  local target=$(readlink ~/.claude 2>/dev/null)
+  case "$target" in
+    *elicit*) echo "🔬";;
+    *sociotechnica*) echo "🏗️";;
+    *personal*) echo "🏠";;
+    *) echo "";;
+  esac
+}
+
+# Initialize profile directories if they don't exist
+function cc-init-profiles() {
+  mkdir -p ~/.claude-elicit/skills
+  mkdir -p ~/.claude-personal/skills
+  mkdir -p ~/.claude-sociotechnica/skills
+
+  # Create default settings.json if missing
+  for dir in ~/.claude-elicit ~/.claude-personal ~/.claude-sociotechnica; do
+    if [[ ! -f "$dir/settings.json" ]]; then
+      echo '{}' > "$dir/settings.json"
+    fi
+  done
+
+  # Set default symlink if ~/.claude doesn't exist
+  if [[ ! -L ~/.claude && ! -d ~/.claude ]]; then
+    ln -s ~/.claude-personal ~/.claude
+  fi
+
+  echo "✅ Claude Code profiles initialized"
+}

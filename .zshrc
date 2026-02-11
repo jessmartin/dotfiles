@@ -1,6 +1,9 @@
 export AWS_PROFILE="default"
 export PATH="$HOME/.asdf/shims:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/Users/jessmartin/.utils:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
+export PATH="/Users/jessmartin/.claude/local:$PATH"
 . $(brew --prefix asdf)/libexec/asdf.sh
 
 # Set up history
@@ -45,3 +48,18 @@ export AGKOZAK_CUSTOM_SYMBOLS=( '↕' '📥' '📤' '🆕' '␡' '✨' '♻️' 
 source ~/.zsh/agkozak-zsh-prompt.plugin.zsh
 
 source ~/.aliases
+source ~/.claude-profiles
+
+# Add Claude Code profile icon to prompt
+PROMPT='$(cc_profile_icon) '$PROMPT
+
+# --WCGW_ENVIRONMENT_START--
+if [ -n "$IN_WCGW_ENVIRONMENT" ]; then
+ PROMPT_COMMAND='printf "◉ $(pwd)──➤ \r\e[2K"'
+ prmptcmdwcgw() { eval "$PROMPT_COMMAND" }
+ add-zsh-hook -d precmd prmptcmdwcgw
+ precmd_functions+=prmptcmdwcgw
+fi
+# --WCGW_ENVIRONMENT_END--
+
+export PATH="$HOME/.local/bin:$PATH"
