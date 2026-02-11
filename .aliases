@@ -45,3 +45,8 @@ alias add-alias='vim ~/.dotfiles/.aliases'
 # Coding Agents
 alias claude-yolo='claude --dangerously-skip-permissions'
 alias codex-yolo='codex --yolo'
+
+# Claude Code Profiles
+alias ccp='cc-personal'
+alias cce='cc-elicit'
+alias ccst='cc-sociotechnica'
