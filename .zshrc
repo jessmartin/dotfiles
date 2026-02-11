@@ -43,15 +43,12 @@ zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
 
-# Git prompt
-export AGKOZAK_CUSTOM_SYMBOLS=( '↕' '📥' '📤' '🆕' '␡' '✨' '♻️' '👻' '📦')
-source ~/.zsh/agkozak-zsh-prompt.plugin.zsh
-
+# Aliases and Claude Code profiles
 source ~/.aliases
 source ~/.claude-profiles
 
-# Add Claude Code profile icon to right prompt
-RPROMPT='$(cc_profile_icon) '$RPROMPT
+# Starship prompt (config at ~/.config/starship.toml)
+eval "$(starship init zsh)"
 
 # --WCGW_ENVIRONMENT_START--
 if [ -n "$IN_WCGW_ENVIRONMENT" ]; then
