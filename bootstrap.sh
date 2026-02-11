@@ -51,33 +51,34 @@ function createSymlinks() {
 	ln -sf "$PWD/.config/starship.toml" "$HOME/.config/starship.toml"
 	echo "  .config/starship.toml -> $PWD/.config/starship.toml"
 
-	# Symlink Claude Code skills
-	mkdir -p "$HOME/.claude"
-	if [[ -d "$HOME/.claude/skills" && ! -L "$HOME/.claude/skills" ]]; then
-		echo "Backing up existing skills directory"
-		mv "$HOME/.claude/skills" "$HOME/.claude/skills.backup"
-	fi
-	ln -sf "$PWD/skills" "$HOME/.claude/skills"
-	echo "  .claude/skills -> $PWD/skills"
 }
 
 function initClaudeProfiles() {
 	echo "Initializing Claude Code profiles..."
 
-	mkdir -p ~/.claude-elicit/skills
-	mkdir -p ~/.claude-personal/skills
-	mkdir -p ~/.claude-sociotechnica/skills
+	# If ~/.claude is a real directory, migrate it to personal profile
+	if [[ -d ~/.claude && ! -L ~/.claude ]]; then
+		echo "  Migrating existing ~/.claude to ~/.claude-personal..."
+		mv ~/.claude ~/.claude-personal
+	fi
 
-	for dir in ~/.claude-elicit ~/.claude-personal ~/.claude-sociotechnica; do
-		if [[ ! -f "$dir/settings.json" ]]; then
+	# Create profile directories with full structure
+	for profile in elicit personal sociotechnica; do
+		local dir="$HOME/.claude-$profile"
+		if [[ ! -d "$dir" ]]; then
+			mkdir -p "$dir/skills"
 			echo '{}' > "$dir/settings.json"
+			echo "  ✅ Created $dir"
+		else
+			mkdir -p "$dir/skills"
+			echo "  ⏭️  $dir already exists"
 		fi
 	done
 
-	# Set default symlink if ~/.claude doesn't exist
-	if [[ ! -L ~/.claude && ! -d ~/.claude ]]; then
+	# Set default symlink to personal
+	if [[ ! -L ~/.claude ]]; then
 		ln -s ~/.claude-personal ~/.claude
-		echo "  Default profile set to personal"
+		echo "  Default profile: ~/.claude -> ~/.claude-personal"
 	fi
 }
 
