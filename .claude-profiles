@@ -10,41 +10,37 @@
 CLAUDE_PROFILES_DIR="$HOME"
 
 # Profile switching functions - swap the ~/.claude symlink
-function cc-elicit() {
-  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-elicit"
+function _cc-switch() {
+  local profile_dir="$1"
   if [[ ! -d "$profile_dir" ]]; then
     echo "Profile not initialized. Run: cc-init-profiles"
     return 1
   fi
+  if [[ -d ~/.claude && ! -L ~/.claude ]]; then
+    echo "~/.claude is a real directory, not a symlink. Run: cc-init-profiles"
+    return 1
+  fi
   rm -f ~/.claude
   ln -s "$profile_dir" ~/.claude
+}
+
+function cc-elicit() {
+  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-elicit" || return 1
   echo "🔬 Switched to Elicit profile"
-  echo "   ~/.claude -> $profile_dir"
+  echo "   ~/.claude -> $CLAUDE_PROFILES_DIR/.claude-elicit"
   echo "   NOTE: If switching accounts, log in at claude.ai in your browser"
 }
 
 function cc-personal() {
-  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-personal"
-  if [[ ! -d "$profile_dir" ]]; then
-    echo "Profile not initialized. Run: cc-init-profiles"
-    return 1
-  fi
-  rm -f ~/.claude
-  ln -s "$profile_dir" ~/.claude
+  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-personal" || return 1
   echo "🏠 Switched to Personal profile"
-  echo "   ~/.claude -> $profile_dir"
+  echo "   ~/.claude -> $CLAUDE_PROFILES_DIR/.claude-personal"
 }
 
 function cc-sociotechnica() {
-  local profile_dir="$CLAUDE_PROFILES_DIR/.claude-sociotechnica"
-  if [[ ! -d "$profile_dir" ]]; then
-    echo "Profile not initialized. Run: cc-init-profiles"
-    return 1
-  fi
-  rm -f ~/.claude
-  ln -s "$profile_dir" ~/.claude
+  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-sociotechnica" || return 1
   echo "🏗️ Switched to SocioTechnica profile"
-  echo "   ~/.claude -> $profile_dir"
+  echo "   ~/.claude -> $CLAUDE_PROFILES_DIR/.claude-sociotechnica"
 }
 
 # Show current profile
