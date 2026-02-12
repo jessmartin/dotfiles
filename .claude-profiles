@@ -12,6 +12,7 @@ CLAUDE_PROFILES_DIR="$HOME"
 # Profile switching functions - swap the ~/.claude symlink
 function _cc-switch() {
   local profile_dir="$1"
+  local kill_all="$2"
   if [[ ! -d "$profile_dir" ]]; then
     echo "Profile not initialized. Run: cc-init-profiles"
     return 1
@@ -20,25 +21,74 @@ function _cc-switch() {
     echo "~/.claude is a real directory, not a symlink. Run: cc-init-profiles"
     return 1
   fi
+  # Detect running Claude instances (CLI, desktop app, Conductor)
+  local running="" kill_pids=""
+  local exclude_pids=""
+  # Conductor-embedded Claude Code
+  local cond_pids
+  cond_pids=$(pgrep -f 'com.conductor.app/bin/claude' 2>/dev/null)
+  if [[ -n "$cond_pids" ]]; then
+    while read -r pid; do
+      running+="   PID $pid  Conductor"$'\n'
+      exclude_pids+="$pid "
+    done <<< "$cond_pids"
+  fi
+  # Claude desktop app (kill main process, helpers will follow)
+  local desk_pids
+  desk_pids=$(pgrep -f 'Claude.app/Contents/MacOS/Claude' 2>/dev/null)
+  if [[ -n "$desk_pids" ]]; then
+    while read -r pid; do
+      running+="   PID $pid  Claude desktop"$'\n'
+      exclude_pids+="$pid "
+    done <<< "$desk_pids"
+  fi
+  # Claude Code CLI sessions (exclude Conductor/desktop PIDs)
+  local all_claude ptty
+  all_claude=$(pgrep -x claude 2>/dev/null)
+  if [[ -n "$all_claude" ]]; then
+    while read -r pid; do
+      [[ "$exclude_pids" == *"$pid "* ]] && continue
+      ptty=$(ps -o tty= -p "$pid" 2>/dev/null | tr -d ' ')
+      running+="   PID $pid  Claude Code CLI (${ptty:-??})"$'\n'
+    done <<< "$all_claude"
+  fi
+  if [[ -n "$running" ]]; then
+    if [[ "$kill_all" == "--kill-all" ]]; then
+      echo "Killing all Claude instances..."
+      printf "%s" "$running"
+      # Gracefully quit desktop apps
+      [[ -n "$desk_pids" ]] && osascript -e 'quit app "Claude"' 2>/dev/null
+      pgrep -f 'Conductor.app/Contents/MacOS/conductor' 2>/dev/null | xargs kill 2>/dev/null
+      # Kill CLI and embedded sessions
+      pgrep -x claude 2>/dev/null | xargs kill 2>/dev/null
+      # Wait for processes to exit
+      sleep 1
+    else
+      echo "Cannot switch profiles while Claude is running!"
+      printf "%s" "$running"
+      echo "Quit all Claude instances first, or re-run with --kill-all"
+      return 1
+    fi
+  fi
   rm -f ~/.claude
   ln -s "$profile_dir" ~/.claude
 }
 
 function cc-elicit() {
-  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-elicit" || return 1
+  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-elicit" "$1" || return 1
   echo "🔬 Switched to Elicit profile"
   echo "   ~/.claude -> $CLAUDE_PROFILES_DIR/.claude-elicit"
   echo "   NOTE: If switching accounts, log in at claude.ai in your browser"
 }
 
 function cc-personal() {
-  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-personal" || return 1
+  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-personal" "$1" || return 1
   echo "🏠 Switched to Personal profile"
   echo "   ~/.claude -> $CLAUDE_PROFILES_DIR/.claude-personal"
 }
 
 function cc-sociotechnica() {
-  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-sociotechnica" || return 1
+  _cc-switch "$CLAUDE_PROFILES_DIR/.claude-sociotechnica" "$1" || return 1
   echo "🏗️ Switched to SocioTechnica profile"
   echo "   ~/.claude -> $CLAUDE_PROFILES_DIR/.claude-sociotechnica"
 }
