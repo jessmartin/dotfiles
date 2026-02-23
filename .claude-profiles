@@ -22,7 +22,7 @@ function _cc-switch() {
     return 1
   fi
   # Detect running Claude instances (CLI, desktop app, Conductor)
-  local running="" kill_pids=""
+  local running=""
   local exclude_pids=""
   # Conductor-embedded Claude Code
   local cond_pids
