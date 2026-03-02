@@ -1,0 +1,62 @@
+# Starship prompt configuration
+
+# Insert blank line between prompts
+add_newline = true
+
+# Left prompt - CC profile icon, directory
+format = """
+${custom.cc_profile}\
+$directory\
+$line_break\
+$character"""
+
+# Right prompt - git info + PR number
+right_format = """
+${custom.gh_pr}\
+$git_branch\
+$git_status\
+$git_state\
+$cmd_duration"""
+
+# GitHub PR number (reads from async cache per branch)
+[custom.gh_pr]
+command = "cat $(git rev-parse --git-dir 2>/dev/null)/PR_NUMBER_$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-') 2>/dev/null | grep -E '^[0-9]+$'"
+when = "test -s $(git rev-parse --git-dir 2>/dev/null)/PR_NUMBER_$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-')"
+format = "[PR#$output ]($style)"
+style = "cyan"
+
+# Claude Code profile icon (reads symlink target)
+[custom.cc_profile]
+command = "case $(readlink ~/.claude) in *elicit*) echo 🔬;; *sociotechnica*) echo 🏗️;; *personal*) echo 🏠;; esac"
+when = "test -L ~/.claude"
+format = "[$output ]($style)"
+style = ""
+
+[character]
+success_symbol = "[%](bold green)"
+error_symbol = "[%](bold red)"
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = true
+repo_root_style = "bold blue"
+style = "blue"
+repo_root_format = "[$repo_root]($repo_root_style)[$path]($style) "
+
+[git_branch]
+format = "[$branch]($style) "
+style = "bold purple"
+
+[git_status]
+format = '[$all_status$ahead_behind]($style)'
+style = "yellow"
+diverged = "↕"
+behind = "📥"
+ahead = "📤"
+untracked = "🆕"
+deleted = "␡"
+modified = "✨"
+renamed = "♻️"
+stashed = "👻"
+staged = "📦"

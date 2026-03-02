@@ -1,6 +1,9 @@
 export AWS_PROFILE="default"
 export PATH="$HOME/.asdf/shims:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.utils:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
+export PATH="$HOME/.claude/local:$PATH"
 . $(brew --prefix asdf)/libexec/asdf.sh
 
 # Set up history
@@ -40,8 +43,38 @@ zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
 autoload -Uz compinit && compinit
 
-# Git prompt
-export AGKOZAK_CUSTOM_SYMBOLS=( '↕' '📥' '📤' '🆕' '␡' '✨' '♻️' '👻' '📦')
-source ~/.zsh/agkozak-zsh-prompt.plugin.zsh
-
+# Aliases and Claude Code profiles
 source ~/.aliases
+source ~/.claude-profiles
+
+# Starship prompt (config at ~/.config/starship.toml)
+eval "$(starship init zsh)"
+
+# Async PR number cache using zsh-async
+source /opt/homebrew/opt/zsh-async/share/zsh/site-functions/async
+async_init
+async_start_worker pr_cache_worker -n
+
+_update_pr_cache() {
+  local git_dir=$(git rev-parse --git-dir 2>/dev/null)
+  [[ -z "$git_dir" ]] && return
+  [[ "$git_dir" != /* ]] && git_dir="$PWD/$git_dir"
+
+  local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-')
+  [[ -z "$branch" ]] && return
+
+  local cache_file="$git_dir/PR_NUMBER_$branch"
+
+  # Use async to run a shell command that fetches and writes
+  async_job pr_cache_worker zsh -c "
+    pr=\$(gh pr view --json number -q .number 2>/dev/null)
+    if [[ -n \"\$pr\" ]]; then
+      echo \"\$pr\" > '$cache_file'
+    else
+      rm -f '$cache_file'
+    fi
+  "
+}
+add-zsh-hook precmd _update_pr_cache
+
+export PATH="$HOME/.local/bin:$PATH"

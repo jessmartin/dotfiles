@@ -42,11 +42,13 @@ brew "openvino"
 brew "python@3.8"
 brew "qt"
 brew "serve"
+brew "starship"
 brew "telnet"
 brew "terraform"
 brew "wget"
 brew "youtube-dl"
 brew "yt-dlp"
+brew "zsh-async"
 
 # casks
 cask "1password"

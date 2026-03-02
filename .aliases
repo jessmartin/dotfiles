@@ -42,5 +42,11 @@ alias yt='youtube-dl -f bestaudio -x --audio-format m4a'
 # Add Alias
 alias add-alias='vim ~/.dotfiles/.aliases'
 
-# Claude Code
+# Coding Agents
 alias claude-yolo='claude --dangerously-skip-permissions'
+alias codex-yolo='codex --yolo'
+
+# Claude Code Profiles
+alias ccp='cc-personal'
+alias cce='cc-elicit'
+alias ccst='cc-sociotechnica'
