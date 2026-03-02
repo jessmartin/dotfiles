@@ -38,7 +38,7 @@ function createSymlinks() {
 			echo "Backing up existing $dir to $dir.backup"
 			mv "$HOME/$dir" "$HOME/$dir.backup"
 		fi
-		ln -sf "$PWD/$dir" "$HOME/$dir"
+		ln -sfn "$PWD/$dir" "$HOME/$dir"
 		echo "  $dir -> $PWD/$dir"
 	done
 
@@ -54,32 +54,9 @@ function createSymlinks() {
 }
 
 function initClaudeProfiles() {
-	echo "Initializing Claude Code profiles..."
-
-	# If ~/.claude is a real directory, migrate it to personal profile
-	if [[ -d ~/.claude && ! -L ~/.claude ]]; then
-		echo "  Migrating existing ~/.claude to ~/.claude-personal..."
-		mv ~/.claude ~/.claude-personal
-	fi
-
-	# Create profile directories with full structure
-	for profile in elicit personal sociotechnica; do
-		local dir="$HOME/.claude-$profile"
-		if [[ ! -d "$dir" ]]; then
-			mkdir -p "$dir/skills"
-			echo '{}' > "$dir/settings.json"
-			echo "  ✅ Created $dir"
-		else
-			mkdir -p "$dir/skills"
-			echo "  ⏭️  $dir already exists"
-		fi
-	done
-
-	# Set default symlink to personal
-	if [[ ! -L ~/.claude ]]; then
-		ln -s ~/.claude-personal ~/.claude
-		echo "  Default profile: ~/.claude -> ~/.claude-personal"
-	fi
+	# Source .claude-profiles (already symlinked) and use its cc-init-profiles
+	source "$PWD/.claude-profiles"
+	cc-init-profiles
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

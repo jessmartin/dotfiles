@@ -5,7 +5,7 @@ add_newline = true
 
 # Left prompt - CC profile icon, directory
 format = """
-$custom\
+${custom.cc_profile}\
 $directory\
 $line_break\
 $character"""
@@ -20,8 +20,8 @@ $cmd_duration"""
 
 # GitHub PR number (reads from async cache per branch)
 [custom.gh_pr]
-command = "cat .git/PR_NUMBER_$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-') 2>/dev/null | grep -E '^[0-9]+$'"
-when = "test -s .git/PR_NUMBER_$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-')"
+command = "cat $(git rev-parse --git-dir 2>/dev/null)/PR_NUMBER_$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-') 2>/dev/null | grep -E '^[0-9]+$'"
+when = "test -s $(git rev-parse --git-dir 2>/dev/null)/PR_NUMBER_$(git rev-parse --abbrev-ref HEAD 2>/dev/null | tr '/' '-')"
 format = "[PR#$output ]($style)"
 style = "cyan"
 

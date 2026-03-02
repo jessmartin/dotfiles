@@ -123,6 +123,11 @@ function cc-init-profiles() {
 
   # If ~/.claude is a real directory, migrate it to personal profile
   if [[ -d ~/.claude && ! -L ~/.claude ]]; then
+    if [[ -d ~/.claude-personal ]]; then
+      echo "  ERROR: ~/.claude is a real directory but ~/.claude-personal already exists."
+      echo "  Please manually resolve before migrating."
+      return 1
+    fi
     echo "  Migrating existing ~/.claude to ~/.claude-personal..."
     mv ~/.claude ~/.claude-personal
   fi
