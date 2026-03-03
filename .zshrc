@@ -50,6 +50,8 @@ source ~/.claude-profiles
 # Starship prompt (config at ~/.config/starship.toml)
 eval "$(starship init zsh)"
 
+autoload -Uz add-zsh-hook
+
 # Async PR number cache using zsh-async
 source /opt/homebrew/opt/zsh-async/share/zsh/site-functions/async
 async_init
