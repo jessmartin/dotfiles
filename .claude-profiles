@@ -138,7 +138,7 @@ function cc-init-profiles() {
 
     if [[ ! -d "$dir" ]]; then
       mkdir -p "$dir/skills"
-      echo '{}' > "$dir/settings.json"
+      echo '{"cleanupPeriodDays": 180}' > "$dir/settings.json"
       echo "  ✅ Created $dir"
     else
       # Ensure skills dir exists
