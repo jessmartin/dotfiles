@@ -145,6 +145,17 @@ function cc-init-profiles() {
       mkdir -p "$dir/skills"
       echo "  ⏭️  $dir already exists"
     fi
+
+    # Symlink shared commands directory
+    local dotfiles_commands="$HOME/.dotfiles/.claude-commands"
+    if [[ -d "$dotfiles_commands" ]]; then
+      if [[ -d "$dir/commands" && ! -L "$dir/commands" ]]; then
+        echo "  ⚠️  $dir/commands is a real directory — backing up to commands.backup"
+        mv "$dir/commands" "$dir/commands.backup"
+      fi
+      ln -sfn "$dotfiles_commands" "$dir/commands"
+      echo "  🔗 $dir/commands -> $dotfiles_commands"
+    fi
   done
 
   # Set default symlink to personal
