@@ -39,14 +39,12 @@ brew "numpy"
 brew "pytorch"
 brew "openai-whisper"
 brew "openvino"
-brew "python@3.8"
 brew "qt"
 brew "serve"
 brew "starship"
 brew "telnet"
 brew "terraform"
 brew "wget"
-brew "youtube-dl"
 brew "yt-dlp"
 brew "zsh-async"
 
@@ -62,7 +60,6 @@ cask "discord"
 cask "docker"
 cask "dropbox"
 cask "elgato-control-center"
-cask "elgato-stream-deck"
 cask "figma"
 cask "firefox"
 cask "font-inter"
@@ -80,7 +77,7 @@ cask "maccy"
 cask "macvim"
 cask "marked"
 cask "microsoft-auto-update"
-cask "microsoft-office"
+# cask "microsoft-office"
 cask "ngrok"
 cask "notion"
 # cask "obs" # only install on desktops
@@ -113,19 +110,17 @@ cask "whatsapp"
 cask "whichspace"
 cask "zoom"
 
-mas "Capo", id: 696977615
+# mas "Capo", id: 696977615
 mas "Dato", id: 1470584107
-mas "GarageBand", id: 682658836
+# mas "GarageBand", id: 682658836
 mas "Hand Mirror", id: 1502839586
 # mas "iMovie", id: 408981434 # only install on desktops to save space
 mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+# mas "Numbers", id: 409203825
+# mas "Pages", id: 409201541
 mas "reMarkable", id: 1276493162
-mas "Sip", id: 507257563
 mas "Tomato 2", id: 1494210770
-mas "Trello", id: 1278508951
-mas "Webcam Settings", id: 533696630
+# mas "Webcam Settings", id: 533696630
 mas "Xcode", id: 497799835
 
 vscode "adamhartford.vscode-base64"
