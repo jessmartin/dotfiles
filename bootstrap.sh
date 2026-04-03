@@ -42,6 +42,11 @@ function createSymlinks() {
 		echo "  $dir -> $PWD/$dir"
 	done
 
+	# Symlink scripts to ~/.local/bin
+	mkdir -p "$HOME/.local/bin"
+	ln -sf "$PWD/bin/md2slack" "$HOME/.local/bin/md2slack"
+	echo "  bin/md2slack -> $PWD/bin/md2slack"
+
 	# Symlink starship config
 	mkdir -p "$HOME/.config"
 	if [[ -f "$HOME/.config/starship.toml" && ! -L "$HOME/.config/starship.toml" ]]; then
